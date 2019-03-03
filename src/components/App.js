@@ -4,15 +4,18 @@ import Header from "./Header";
 import Order from "./Order";
 import Inventory from "./Inventory";
 
+import "../index.css";
+
 class App extends React.Component {
   render() {
-    // return <div><i>Hellow World</i></div> //jsx html w js
     return (
-      <div>
+      <div className="app container"/*container wyrownuje szer*/>
         <Header />
-        <Order />
-        <Inventory />
-        <AdminPanel />
+        <div className="row" /*klasa bootstrapowa row  dzieli nasze komponenty na rowne wiersze w kolumnie 3 w 1  */>
+          <Order />
+          <Inventory />
+          <AdminPanel />
+        </div>
       </div>
     );
   }
