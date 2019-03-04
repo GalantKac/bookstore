@@ -7,15 +7,9 @@ import Adapter from 'enzyme-adapter-react-16';
 configure({adapter: new Adapter()});
 
 describe('Order tests', () => {
-    it('Order render without a problem', () => {
-        const div = document.createElement('div');
-        ReactDOM.render(<Order />, div);
-        ReactDOM.unmountComponentAtNode(div); // zwalnianie pamieci
-    })
+    it('Snapshot Matches', () => {
+        const wrapper = shallow(<Order/>); 
+        expect(wrapper).toMatchSnapshot();
 
-    it('Zamowienie renders', () => {
-        const wrapper = shallow(<Order/>);
-        //console.log(wrapper.debug());
-        expect(wrapper.find('div').text()).toBe('Zamowienie');
     })
 })

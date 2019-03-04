@@ -13,9 +13,10 @@ describe('AdminPanel tests', () => { // zbiera metody it
         ReactDOM.unmountComponentAtNode(div); // zwalnianie pamieci
     })
 
-    it('AdminPanel renders', () => {
+    it('Snapshot Matches', () => {
         const wrapper = shallow(<AdminPanel/>); // enzyme tu utworzyl komponent
         //console.log(wrapper.debug());
-        expect(wrapper.find('div').text()).toBe('Panel Administratora');
+        expect(wrapper).toMatchSnapshot();
+
     })
 })

@@ -29,4 +29,9 @@ describe('Header tests', () => {
         wrapper.find('.header').simulate('click');
         expect(wrapper.state().bookstoreName).toBe('White Books');
     })
+
+    it('Snapshot Matches', () => {
+        const wrapper = shallow(<Header/>); 
+        expect(wrapper).toMatchSnapshot();
+    })
 })

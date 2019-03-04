@@ -12,6 +12,11 @@ describe('App tests', () => {
         ReactDOM.render(<App />, div);
         ReactDOM.unmountComponentAtNode(div); // zwalnianie pamieci
     })
+    it('Snapshot Matches', () => {
+        const wrapper = shallow(<App/>); 
+        expect(wrapper).toMatchSnapshot();
+
+    })
 
     it('Child componets render', () => {
         const wrapper = shallow(<App/>);
