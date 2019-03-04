@@ -9,18 +9,14 @@ configure({adapter: new Adapter()});
 describe('Inventory tests', () => {
     it('Inventory render without a problem', () => {
         const div = document.createElement('div');
-        ReactDOM.render(<Inventory />, div);
+        const books = [];
+        ReactDOM.render(<Inventory books={books}/>, div);
         ReactDOM.unmountComponentAtNode(div); // zwalnianie pamieci
     })
 
-    it('Invetarz renders', () => {
-        const wrapper = shallow(<Inventory/>);
-        //console.log(wrapper.debug());
-        expect(wrapper.find('div').text()).toBe('Inventory');
-    })
-
     it('Snapshot Matches', () => {
-        const wrapper = shallow(<Inventory/>); 
+        const books = [];
+        const wrapper = shallow(<Inventory books={books}/>); 
         expect(wrapper).toMatchSnapshot();
     })
 })

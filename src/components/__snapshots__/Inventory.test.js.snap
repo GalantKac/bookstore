@@ -3,7 +3,9 @@
 exports[`Inventory tests Snapshot Matches 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Inventory />,
+  Symbol(enzyme.__unrendered__): <Inventory
+    books={Array []}
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "checkPropTypes": [Function],
@@ -18,11 +20,11 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "children": "Inventory",
+      "children": Array [],
       "className": "inventory col-md-4",
     },
     "ref": null,
-    "rendered": "Inventory",
+    "rendered": Array [],
     "type": "div",
   },
   Symbol(enzyme.__nodes__): Array [
@@ -31,11 +33,11 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "children": "Inventory",
+        "children": Array [],
         "className": "inventory col-md-4",
       },
       "ref": null,
-      "rendered": "Inventory",
+      "rendered": Array [],
       "type": "div",
     },
   ],
