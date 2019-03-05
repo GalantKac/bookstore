@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 class Header extends React.Component {
   constructor() {
@@ -41,6 +42,7 @@ class Header extends React.Component {
         <center>
           <h1>{this.state.bookstoreName}</h1>
         </center>
+        <Link to="/admin">Go to Admin panel</Link>
       </div>
     );
   }

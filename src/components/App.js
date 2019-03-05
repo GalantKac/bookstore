@@ -1,5 +1,4 @@
 import React from "react";
-import AdminPanel from "./AdminPanel";
 import Header from "./Header";
 import Order from "./Order";
 import Inventory from "./Inventory";
@@ -11,22 +10,11 @@ class App extends React.Component {
   constructor(){
     super();
     this.state = {
-      books: [],
-      order: [],
+      order: []
     }
   }
 
-  addNewBook = (book) => {
 
-    let newBooks = [...this.state.books];
-
-    newBooks.push(book);
-
-    this.setState ({
-        books : newBooks
-    })
-
-  }
 
   addToOrder = (book) => {
     this.setState({
@@ -47,7 +35,6 @@ class App extends React.Component {
         <div className="row" /*klasa bootstrapowa row  dzieli nasze komponenty na rowne wiersze w kolumnie 3 w 1  */>
           <Order order={this.state.order} removeFromOrder={this.removeFromOrder}/>
           <Inventory books={this.state.books} addToOrder={this.addToOrder}/>
-          <AdminPanel books={this.state.books} addBook={this.addNewBook}/>
         </div>
       </div>
     );
