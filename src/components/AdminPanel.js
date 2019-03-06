@@ -70,7 +70,7 @@ class AdminPanel extends React.Component {
   componentDidMount() {
     this.ref = fbase.syncState("bookstore/books", {
       context: this,
-      state: "books"
+      state: 'books'
     });
   }
 
