@@ -23,4 +23,8 @@ body {
 .adminPanel {
   background-color: black;
   padding: 10px;
+  margin-left: 30%;
+  margin-right: 30%;
+  margin-top: 10%;
+  border-radius: 20px;
 }
