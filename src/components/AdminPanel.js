@@ -104,7 +104,9 @@ class AdminPanel extends React.Component {
     return (
       <div>
         {!this.state.loggedIn && (
+          <div className="adminPanel align-self-center">
           <form onSubmit={this.authenticate}>
+          <div className="form-group">
             <input
               type="text"
               placeholder="email"
@@ -114,6 +116,8 @@ class AdminPanel extends React.Component {
               onChange={this.handleLoginChane}
               value={this.state.email}
             />
+            </div>
+            <div className="form-group">
             <input
               type="password"
               placeholder="password"
@@ -123,10 +127,12 @@ class AdminPanel extends React.Component {
               onChange={this.handleLoginChane}
               value={this.state.password}
             />
+                        </div>
             <button type="submit" className="btn btn-primary">
               Login
             </button>
           </form>
+          </div>
         )}
         {this.state.loggedIn && (
           <div className="adminPanel align-self-center">
