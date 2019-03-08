@@ -104,7 +104,7 @@ class AdminPanel extends React.Component {
     return (
       <div>
         {!this.state.loggedIn && (
-          <div className="adminPanel align-self-center">
+          <div className="loginPanel align-self-center">
           <form onSubmit={this.authenticate}>
           <div className="form-group">
             <input
