@@ -27,6 +27,7 @@ class Inventory extends React.Component {
         return <BookView book={book} addToOrder={this.props.addToOrder}/>
     });
     return <div className="inventory col-md-6">
+    <h2>Bookstore inventory:</h2>
     {bookListing}
     </div>
   }

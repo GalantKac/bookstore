@@ -38,11 +38,9 @@ class Header extends React.Component {
     }
 
     return (
-      <div className="row header" style={headerCss} onClick={this.hadleClick} /*chcemy aby byl wierszem dlatego row*/>
-        <center>
-          <h1>{this.state.bookstoreName}</h1>
-        </center>
-        <Link to="/admin">Go to Admin panel</Link>
+      <div className="row" style={headerCss} onClick={this.hadleClick} /*chcemy aby byl wierszem dlatego row*/>
+          <h1 className="col text-center">{this.state.bookstoreName}</h1>
+        <Link to="/admin"><button className="col btn btn-info">Administrator Panel</button></Link>
       </div>
     );
   }
