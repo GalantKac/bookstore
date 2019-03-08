@@ -1,5 +1,5 @@
 import React from "react";
-import { fbase } from "../fbase";
+import { fbase, firebaseApp } from "../fbase";
 
 class AdminPanel extends React.Component {
   constructor() {
@@ -12,10 +12,18 @@ class AdminPanel extends React.Component {
         description: "",
         onStock: true,
         image: ""
-      }
+      },
+      loggedIn: false,
+      email: "",
+      password: ""
     };
   }
 
+  handleLoginChane = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
   handleChange = event => {
     let newBook;
 
@@ -52,8 +60,7 @@ class AdminPanel extends React.Component {
           image: ""
         }
       });
-    }
-    else {
+    } else {
       this.setState({
         books: [newBook],
         book: {
@@ -70,7 +77,7 @@ class AdminPanel extends React.Component {
   componentDidMount() {
     this.ref = fbase.syncState("bookstore/books", {
       context: this,
-      state: 'books'
+      state: "books"
     });
   }
 
@@ -78,69 +85,113 @@ class AdminPanel extends React.Component {
     fbase.removeBinding(this.ref);
   }
 
+  authenticate = (event) => {
+    event.preventDefault();
+    firebaseApp
+      .auth()
+      .signInWithEmailAndPassword(this.state.email, this.state.password)
+      .then(() => {
+        this.setState({
+          loggedIn: true
+        });
+      })
+      .catch(() => {
+        console.log('Unable to autheticate');
+      });
+  };
+
   render() {
     return (
-      <div className="adminPanel align-self-center">
-        <form onSubmit={this.addNewBook}>
-          <div className="form-group">
+      <div>
+        {!this.state.loggedIn && (
+          <form onSubmit={this.authenticate}>
             <input
               type="text"
-              placeholder="Book name"
-              id="name"
-              name="name"
+              placeholder="email"
+              id="email_bs"
+              name="email"
               className="form-control"
-              onChange={this.handleChange}
-              value={this.state.book.name}
+              onChange={this.handleLoginChane}
+              value={this.state.email}
             />
-          </div>
-          <div className="form-group">
             <input
-              type="text"
-              placeholder="Book author"
-              id="author"
-              name="author"
+              type="password"
+              placeholder="password"
+              id="password_bs"
+              name="password"
               className="form-control"
-              onChange={this.handleChange}
-              value={this.state.book.author}
+              onChange={this.handleLoginChane}
+              value={this.state.password}
             />
+            <button type="submit" className="btn btn-primary">
+              Login
+            </button>
+          </form>
+        )}
+        {this.state.loggedIn && (
+          <div className="adminPanel align-self-center">
+            <form onSubmit={this.addNewBook}>
+              <div className="form-group">
+                <input
+                  type="text"
+                  placeholder="Book name"
+                  id="name"
+                  name="name"
+                  className="form-control"
+                  onChange={this.handleChange}
+                  value={this.state.book.name}
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="text"
+                  placeholder="Book author"
+                  id="author"
+                  name="author"
+                  className="form-control"
+                  onChange={this.handleChange}
+                  value={this.state.book.author}
+                />
+              </div>
+              <div className="form-group">
+                <textarea
+                  placeholder="Book description"
+                  id="description"
+                  name="description"
+                  className="form-control"
+                  onChange={this.handleChange}
+                  value={this.state.book.description}
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="checkbox"
+                  id="onStock"
+                  name="onStock"
+                  onChange={this.handleChange}
+                  value={this.state.book.onStock}
+                />
+                <label htmlFor="onStock" className="form-check-label">
+                  On stock
+                </label>
+              </div>
+              <div className="form-group">
+                <input
+                  type="text"
+                  placeholder="Book image"
+                  id="image"
+                  name="image"
+                  className="form-control"
+                  onChange={this.handleChange}
+                  value={this.state.book.image}
+                />
+              </div>
+              <button type="submit" className="btn btn-primary">
+                Add
+              </button>
+            </form>
           </div>
-          <div className="form-group">
-            <textarea
-              placeholder="Book description"
-              id="description"
-              name="description"
-              className="form-control"
-              onChange={this.handleChange}
-              value={this.state.book.description}
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="checkbox"
-              id="onStock"
-              name="onStock"
-              onChange={this.handleChange}
-              value={this.state.book.onStock}
-            />
-            <label htmlFor="onStock" className="form-check-label">
-              On stock
-            </label>
-          </div>
-          <div className="form-group">
-            <input
-              type="text"
-              placeholder="Book image"
-              id="image"
-              name="image"
-              className="form-control"
-              onChange={this.handleChange}
-              value={this.state.book.image}
-            />
-          </div>
-          <button type="submit" className="btn btn-primary">
-            Add
-          </button>
-        </form>
+        )}
       </div>
     );
   }
