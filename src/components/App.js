@@ -9,7 +9,7 @@ class App extends React.Component {
   constructor(){
     super();
     this.state = {
-      order: []
+      order: [],
     }
   }
 
@@ -28,6 +28,7 @@ class App extends React.Component {
   } 
 
   render() {
+    document.body.style.backgroundImage = null;
     return (
       <div className="app container"/*container wyrownuje szer*/>
         <Header />
