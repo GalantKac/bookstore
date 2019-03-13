@@ -18,7 +18,7 @@ class AdminPanel extends React.Component {
         {!this.state.loggedIn && (
           <LoginPanel changeLoggedIn={this.changeLoggedIn} />
         )}
-        {this.state.loggedIn && <AddBookForm />}
+        {this.state.loggedIn && <AddBookForm changeLoggedIn={this.changeLoggedIn}/>}
       </div>
     );
   }

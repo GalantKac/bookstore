@@ -1,5 +1,5 @@
 import React from "react";
-import { fbase } from "../fbase";
+import { fbase,firebaseApp } from "../fbase";
 class AddBookForm extends React.Component {
   constructor() {
     super();
@@ -61,6 +61,20 @@ class AddBookForm extends React.Component {
         }
       });
     }
+  };
+
+  logout = event => {
+    event.preventDefault();
+    firebaseApp
+      .auth()
+      .signOut()
+      .then(() => {
+        this.props.changeLoggedIn(false);
+        localStorage.setItem("loggedIn", false);
+      })
+      .catch(() => {
+        console.log("Can not logout");
+      });
   };
 
   componentDidMount() {
@@ -138,6 +152,9 @@ class AddBookForm extends React.Component {
           </div>
           <button type="submit" className="btn btn-primary">
             Add
+          </button>
+          <button onClick={this.logout} className="btn btn-primary float-right">
+            Logout
           </button>
         </form>
       </div>
