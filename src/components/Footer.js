@@ -5,7 +5,7 @@ class Footer extends React.Component {
         return(
                 <div className="row d-block">
                 <h1 className="col text-center">Footer</h1>
-                <div class="footer-copyright text-center py-3">© 2018 Kacper Galantowicz</div>
+                <div class="footer-copyright text-center py-3">© 2019 Kacper Galantowicz</div>
                 </div>
         )
     }

@@ -11,11 +11,17 @@ export default class BookView extends React.Component {
             height="100"
             alt={this.props.book.name}
           />
+          <br/>
+          <p style={{ fontSize: 9, textAlign: "left" }}>
+            {this.props.book.genre}
+          </p>
         </div>
         <div className="col-md-4">
           <b>{this.props.book.name}</b>
           <br />
           <i>{this.props.book.author}</i>
+          <br />
+          <i style={{ fontSize: 11 }}> {this.props.book.description}</i>
           <br />
         </div>
         <div className="col-md-4">

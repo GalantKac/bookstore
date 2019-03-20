@@ -1,5 +1,5 @@
 import React from "react";
-import { fbase,firebaseApp } from "../fbase";
+import { fbase, firebaseApp } from "../fbase";
 class AddBookForm extends React.Component {
   constructor() {
     super();
@@ -10,7 +10,8 @@ class AddBookForm extends React.Component {
         author: "",
         description: "",
         onStock: true,
-        image: ""
+        image: "",
+        genre: ""
       }
     };
   }
@@ -46,7 +47,8 @@ class AddBookForm extends React.Component {
           author: "",
           description: "",
           onStock: true,
-          image: ""
+          image: "",
+          genre: ""
         }
       });
     } else {
@@ -57,7 +59,8 @@ class AddBookForm extends React.Component {
           author: "",
           description: "",
           onStock: true,
-          image: ""
+          image: "",
+          genre: ""
         }
       });
     }
@@ -116,6 +119,23 @@ class AddBookForm extends React.Component {
               onChange={this.handleChange}
               value={this.state.book.author}
             />
+          </div>
+          <div className="form-group">
+            <select
+              class="form-control"
+              id="genre"
+              
+              name="genre"
+              onChange={this.handleChange}
+              value={this.state.book.genre}
+            >
+            <option selected>Genre...</option>
+              <option value="Crime">Crime</option>
+              <option value="Fantasy">Fantasy</option>
+              <option value="Horror">Horror</option>
+              <option value="Drama">Drama</option>
+              <option value="Romance">Romance</option>
+            </select>
           </div>
           <div className="form-group">
             <textarea
