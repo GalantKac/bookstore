@@ -1,5 +1,6 @@
 import React from "react";
 import { fbase, firebaseApp } from "../fbase";
+import {Link} from "react-router-dom";
 class AddBookForm extends React.Component {
   constructor() {
     super();
@@ -124,12 +125,11 @@ class AddBookForm extends React.Component {
             <select
               class="form-control"
               id="genre"
-              
               name="genre"
               onChange={this.handleChange}
               value={this.state.book.genre}
             >
-            <option selected>Genre...</option>
+              <option selected>Genre...</option>
               <option value="Crime">Crime</option>
               <option value="Fantasy">Fantasy</option>
               <option value="Horror">Horror</option>
@@ -170,12 +170,17 @@ class AddBookForm extends React.Component {
               value={this.state.book.image}
             />
           </div>
-          <button type="submit" className="btn btn-primary">
-            Add
-          </button>
-          <button onClick={this.logout} className="btn btn-primary float-right">
-            Logout
-          </button>
+          <div className="d-flex justify-content-between">
+            <button type="submit" className="btn btn-primary">
+              Add
+            </button>
+            <Link to={{pathname: '/delete', state: { books: this.books}}} >
+              <button className="btn btn-danger">Remove</button>
+            </Link>
+            <button onClick={this.logout} className="btn btn-primary">
+              Logout
+            </button>
+          </div>
         </form>
       </div>
     );
